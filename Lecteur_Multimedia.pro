@@ -27,8 +27,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    slidertime.cpp
+    slidertime.cpp \
+    myvideowidget.cpp
 
 HEADERS += \
         mainwindow.h \
-    slidertime.h
+    slidertime.h \
+    myvideowidget.h

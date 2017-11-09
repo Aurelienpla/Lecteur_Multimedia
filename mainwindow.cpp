@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "myvideowidget.h"
 
 void MainWindow::initIHM()
 {
@@ -12,7 +13,7 @@ void MainWindow::initIHM()
    mPbPlus = new QPushButton("+");
    mPbMinus = new QPushButton("-");
 
-   mVideoFrame = new QVideoWidget();
+   mVideoFrame = new MyVideoWidget();
    mVideoFrame->setMinimumSize(200,200);
 
    //mSliderTime = new QSlider(Qt::Horizontal);
@@ -115,28 +116,6 @@ void MainWindow::playerSetup()
    mVideoFrame->show();
 }
 
-void MainWindow::mouseDoubleClickEvent(QMouseEvent * event)
-{
-   if(event->button() == Qt::LeftButton){
-      mVideoFrame->setFullScreen(!mVideoFrame->isFullScreen());
-      event->accept();
-   }
-}
-
-void MainWindow::keyPressEvent(QKeyEvent * event)
-{
-   if(event->key() == Qt::Key_Escape){
-      mVideoFrame->setFullScreen(false);
-      event->accept();
-   }
-}
-
-void MainWindow::mousePressEvent(QMouseEvent * event)
-{
-   mSliderTime->setValue(event->x());
-   QPointF point = event->localPos();
-   int x = event->x();
-}
 
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
@@ -234,12 +213,6 @@ void MainWindow::onPlayerPositionChanged(qint64 mediaPos)
 void MainWindow::onSliderPositionChanged(int sliderPos)
 {
    mPlayer->setPosition(sliderPos);
-}
-
-void MainWindow::onSliderClicked()
-{
-   int sliderValue = mSliderTime->value();
-
 }
 
 void MainWindow::onPositionChangedByTimer()

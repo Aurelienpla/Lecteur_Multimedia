@@ -52,11 +52,6 @@ private:
    void connections();
    void playerSetup();
 
-protected:
-   void mouseDoubleClickEvent(QMouseEvent *event) override;
-   void keyPressEvent(QKeyEvent * event) override;
-   void mousePressEvent(QMouseEvent * event) override;
-
 public:
    MainWindow(QWidget *parent = 0);
    ~MainWindow();
@@ -71,7 +66,6 @@ private slots:
    void onDialChanged(int dialVal);
    void onPlayerPositionChanged(qint64 mediaPos);
    void onSliderPositionChanged(int sliderPos);
-   void onSliderClicked();
    void onPositionChangedByTimer();
    void onVideoLoaded(qint64 duree);
    void onFullScreenChanged(bool isFull);
